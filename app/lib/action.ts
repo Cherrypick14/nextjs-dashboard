@@ -35,3 +35,6 @@ export async function createInvoice(formData: FormData) {
     redirect('/dashboard/invoices');
     
 }
+
+const updateInvoice = FormSchema.omit({id: true, date: true})
+
