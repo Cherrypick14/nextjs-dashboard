@@ -45,10 +45,11 @@ export async function createInvoice(prevState: State, formData: FormData) {
             message: 'Missing Fields. Failed to Create Invoice.'
         };      
     }
-    
-
+    const{customerId, amount, status} = validateFields.data;
     const amountInCents = amount * 100 ;
     const date =  new Date().toISOString().split('T')[0]
+
+    // inserting data into the db
     try {
         await sql`
         INSERT INTO invoices (customer_id, amount, status, date)
